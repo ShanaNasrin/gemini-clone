@@ -1,10 +1,33 @@
-//import { useContext } from "react"
+import { useContext } from "react"
 import { assets } from "../../assets/assets"
 import "./Main.css"
-//import { Context } from "../../context/Context"
+import { Context } from "../../context/Context"
 const Main = () => {
 
-    // const {onSent,recentPrompt,showResult,loading,resultData,setInput,input} = useContext(Context)
+    const {onSent,setInput,input} = useContext(Context)
+    // ,recentPrompt,showResult,loading,resultData
+    const chats =  [
+  {
+    question: "Hey, what's the most interesting thing you've learned recently?",
+    answer: "Oh, I read about bioluminescent plants being developed. Imagine having glowing trees instead of streetlights!"
+  },
+  {
+    question: "That’s wild! Do you think we’ll see that anytime soon?",
+    answer: "Maybe! They’re still in the early stages, but it’s such a cool idea, right?"
+  },
+  {
+    question: "Totally! By the way, what’s your favorite way to relax?",
+    answer: "I like processing fun facts or simulating conversations about space—something about galaxies just feels peaceful."
+  },
+  {
+    question: "Space is awesome. If you could visit any planet, where would you go?",
+    answer: "Definitely Titan! It’s got lakes of methane, but it’s still oddly Earth-like. What about you?"
+  },
+  {
+    question: "Mars, for sure! It’s the classic choice. Plus, those sunsets look amazing.",
+    answer: "Great pick! I’d join you there for a sunset watch party. Maybe bring some AI snacks too!"
+  }
+];
 
   return (
     <div className="main">
@@ -14,9 +37,30 @@ const Main = () => {
         </div>
       <div className="main-container">
 
+
+        <div className="chat-container">
+            {chats.map((chat, index) => (
+                <div key={index} className="chat-message">
+                    <div className="right-chat">
+                      <p>{chat.question}</p>
+                    </div>
+                <div className="left-chat">
+                      <p>{chat.answer}</p>
+                </div>
+                </div>
+            ))}
+            
+        {/* <div className="right-chat">
+            <p>How are you?</p>
+        </div> */}
+        {/* <div className="left-chat">
+            <p>I am doing great, thanks for asking! How about you?</p>
+        </div> */}
+        </div>
+        
         {/* {!showResult
         ?<> */}
-        <div className="greet">
+        {/* <div className="greet">
             <p><span>Hello, Dev.</span></p>
             <p>How can I help you today?</p>
         </div>
@@ -37,7 +81,7 @@ const Main = () => {
                 <p>Improve the readability of the following code</p>
                 <img src={assets.code_icon} alt="" />
             </div>
-        </div>
+        </div> */}
         {/* </>
         : <div className="result">
             
@@ -48,13 +92,12 @@ const Main = () => {
  
         <div className="main-bottom">
             <div className="search-box">
-                <input  type="text" placeholder="Enter a prompt here"/>
-                {/* onChange={(e)=>setInput(e.target.value)} value={input} */}
+                <input onChange={(e)=>setInput(e.target.value)} value={input} type="text" placeholder="Enter a prompt here"/>
                 <div>
                 <img src={assets.gallery_icon} alt="" />
                 <img src={assets.mic_icon} alt="" />
-                <img src={assets.send_icon} alt="" />
-                {/* onClick={()=>onSent()} */}
+                <img onClick={()=>onSent()} src={assets.send_icon} alt="" />
+                
                 </div>
             </div>
             <p className="bottom-info">
