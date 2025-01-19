@@ -4,30 +4,7 @@ import "./Main.css"
 import { Context } from "../../context/Context"
 const Main = () => {
 
-    const {onSent,setInput,input} = useContext(Context)
-    // ,recentPrompt,showResult,loading,resultData
-    const chats =  [
-  {
-    question: "Hey, what's the most interesting thing you've learned recently?",
-    answer: "Oh, I read about bioluminescent plants being developed. Imagine having glowing trees instead of streetlights!"
-  },
-  {
-    question: "That’s wild! Do you think we’ll see that anytime soon?",
-    answer: "Maybe! They’re still in the early stages, but it’s such a cool idea, right?"
-  },
-  {
-    question: "Totally! By the way, what’s your favorite way to relax?",
-    answer: "I like processing fun facts or simulating conversations about space—something about galaxies just feels peaceful."
-  },
-  {
-    question: "Space is awesome. If you could visit any planet, where would you go?",
-    answer: "Definitely Titan! It’s got lakes of methane, but it’s still oddly Earth-like. What about you?"
-  },
-  {
-    question: "Mars, for sure! It’s the classic choice. Plus, those sunsets look amazing.",
-    answer: "Great pick! I’d join you there for a sunset watch party. Maybe bring some AI snacks too!"
-  }
-];
+    const {onSent,recentPrompt,showResult,loading,resultData,setInput,input} = useContext(Context)
 
   return (
     <div className="main">
@@ -37,30 +14,9 @@ const Main = () => {
         </div>
       <div className="main-container">
 
-
-        <div className="chat-container">
-            {chats.map((chat, index) => (
-                <div key={index} className="chat-message">
-                    <div className="right-chat">
-                      <p>{chat.question}</p>
-                    </div>
-                <div className="left-chat">
-                      <p>{chat.answer}</p>
-                </div>
-                </div>
-            ))}
-            
-        {/* <div className="right-chat">
-            <p>How are you?</p>
-        </div> */}
-        {/* <div className="left-chat">
-            <p>I am doing great, thanks for asking! How about you?</p>
-        </div> */}
-        </div>
-        
-        {/* {!showResult
-        ?<> */}
-        {/* <div className="greet">
+        {!showResult
+        ?<>
+        <div className="greet">
             <p><span>Hello, Dev.</span></p>
             <p>How can I help you today?</p>
         </div>
@@ -81,18 +37,34 @@ const Main = () => {
                 <p>Improve the readability of the following code</p>
                 <img src={assets.code_icon} alt="" />
             </div>
-        </div> */}
-        {/* </>
-        : <div className="result">
-            
         </div>
-        } */}
+        </>
+        : <div className="result">
+            <div className="result-title">
+                <img src={assets.user_icon} alt="" />
+                <p>{recentPrompt}</p>
+            </div>
+            <div className="result-data">
+                <img src={assets.gemini_icon} alt="" />
+                {loading
+                ?<div className="loader">
+                    <hr />
+                    <hr />
+                    <hr />
+                </div>
+                :<p dangerouslySetInnerHTML={{__html:resultData}}></p>
+                }
+                
+            </div>  
+        </div>
+        }
 
 
  
         <div className="main-bottom">
             <div className="search-box">
                 <input onChange={(e)=>setInput(e.target.value)} value={input} type="text" placeholder="Enter a prompt here"/>
+                
                 <div>
                 <img src={assets.gallery_icon} alt="" />
                 <img src={assets.mic_icon} alt="" />

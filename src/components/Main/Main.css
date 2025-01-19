@@ -104,75 +104,54 @@
     text-align: center;
     font-weight: 300;
 }
-
-/* .right-chat{
-    display: inline-block;
-    text-align: right;
-    gap: 15px;
-    padding: 20px;
-    background-color: #e1e7e3;
-    border-radius: 50px 10px 50px 50px;
-    position: relative;
-    
+.result{
+    padding: 0px 5%;
+    max-height: 70vh;
+    overflow: scroll;
 }
-.left-chat {
-    text-align: left;
-    gap: 15px;
-    padding: 20px;
-} */
-
-/* .chat-container {
-    max-width: 600px;
-    margin: 30px auto;
-    padding: 10px;
+.result::-webkit-scrollbar{
+    display: none;
+}
+.result-title{
+    margin: 40px 0px;
+    display: flex;
+    align-items: center;
+    gap: 20px; 
+}
+.result img{
+    width: 40px;
+    border-radius: 50%;
+}
+.result-data{
+    display: flex;
+    align-items: start;
+    gap: 20px;
+}
+.loader{
+    width: 100%;
     display: flex;
     flex-direction: column;
-    gap: 30px;
-    height: 50vh;
-    overflow-y: auto;
-    
+    gap: 10px;
 }
-.right-chat {
-    align-self: flex-end;
-    padding: 15px;
-    background-color: #f0f2f5;
-    border-radius: 20px 20px 0 20px;
-    max-width: 70%;
-    position: relative;
-    word-wrap: break-word;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-} */
-.chat-container {
-    max-width: 600%;
-    margin: 30px auto;
-    padding: 10px;
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
-    height: 50vh;
-    overflow-y: auto;
+.loader hr{
+    border-radius: 4px;
+    border: none;
+    background-color: #f6f7f8;
+    background: linear-gradient(to right,#9ed7ff,#ffffff,#9ed7ff);
+    background-size: 800px 50px;
+    height: 20px;
+    animation: loader 3s infinite linear;
 }
-
-.chat-message {
-    display: flex;
-    flex-direction: column;
+@keyframes loader {
+   0%{
+    background-position: -800px 0pxk;
+   } 
+   100%{
+    background-position: 800px 0px;
+   }
 }
-
-.right-chat {
-    align-self: flex-end;
-    padding: 15px;
-    background-color: #f0f2f5;
-    border-radius: 20px 20px 0 20px;
-    max-width: 70%;
-    position: relative;
-    word-wrap: break-word;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.left-chat {
-    align-self: flex-start;
-    padding: 15px;
-    max-width: 70%;
-    position: relative;
-    word-wrap: break-word;
+.result-data p{
+    font-size: 17px;
+    font-weight: 300;
+    line-height: 1.8;
 }
