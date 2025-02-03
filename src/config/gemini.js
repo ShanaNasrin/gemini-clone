@@ -19,14 +19,28 @@ const generationConfig = {
   temperature: 1,
   topP: 0.95,
   topK: 40,
-  maxOutputTokens: 8192,
+  maxOutputTokens: 2045,
   responseMimeType: "text/plain",
 };
 
 async function runChat(prompt) {
   const chat = model.startChat({
     generationConfig,
-    history: [
+    history: [  
+        {
+        role: "user",
+        parts: [{
+          text: `Remember the following context for all future responses:
+          Name: Shana Nasrin
+          Career: Started web development in Nov 2024
+          Skills: HTML, CSS, JavaScript, React ,Git
+          Projects: Facebook UI clone, Color flipper, Gemini clone
+          Education: B.Sc Computer Science, Calicut University (2021)
+          Personal: Married since 2021 to Kamarudheen, has a baby boy
+          Family: Father - Aman, Mother - Fathima Suhra, one younger brother
+          Goals: Become web developer, join FAANG companies, achieve financial independence, travel`
+        }],
+      },
     ],
   });
 
